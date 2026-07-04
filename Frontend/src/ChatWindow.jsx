@@ -170,8 +170,8 @@ function ChatInput() {
         setLoading(true);
          if (!threadId) setThreadId(currentThreadId);
 
-        try {
-            const res = await fetch("http://localhost:3000/api/chat", {
+        try { 
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",

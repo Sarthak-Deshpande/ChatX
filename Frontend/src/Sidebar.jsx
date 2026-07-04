@@ -10,7 +10,7 @@ function Sidebar() {
     const getAllThreads = async () => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:3000/api/thread", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/thread`, {
                 headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
             });
 
@@ -39,7 +39,7 @@ function Sidebar() {
         setMessages([]);  // clear current messages while loading
 
         try {
-            const res = await fetch(`http://localhost:3000/api/thread/${newThreadId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${newThreadId}`, {
                 headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
             });
 
@@ -53,7 +53,7 @@ function Sidebar() {
     const handleDelete = async (e, deletedThreadId) => {
         e.stopPropagation(); // prevent thread from being selected on delete click
         try{
-            await fetch(`http://localhost:3000/api/thread/${deletedThreadId}`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/thread/${deletedThreadId}`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
             });
