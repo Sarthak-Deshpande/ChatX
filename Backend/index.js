@@ -10,8 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://chatx-frontend-pra3.onrender.com"  // 👈 your Render frontend URL
+    ],
+    credentials: true
+}));
 const connectDB = async () => {
   try{
     await mongoose.connect(process.env.MONGODB_URI);
